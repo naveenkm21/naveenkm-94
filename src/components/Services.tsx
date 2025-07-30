@@ -39,7 +39,7 @@ const Services = () => {
   ];
 
   const downloadResume = () => {
-    window.open('https://drive.google.com/file/d/1S26gZ5F61xM6o4QdOHXYt6kDCfvQqovl/view?usp=sharing', '_blank');
+    window.open('https://drive.google.com/file/d/1syZfKsd7eiu458-huSoWu3HOCoUkNg9F/view?usp=sharing', '_blank');
   };
 
   return (

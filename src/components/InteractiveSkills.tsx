@@ -12,6 +12,7 @@ const InteractiveSkills = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const [rotation, setRotation] = useState(0);
 
   const skills: Skill[] = [
     { name: 'JavaScript', logo: '/lovable-uploads/6f2e46b4-5c39-4c40-9cdf-48945f8569f3.png', color: '#F7DF1E', category: 'Frontend' },
@@ -21,6 +22,17 @@ const InteractiveSkills = () => {
     { name: 'C++', logo: '/lovable-uploads/d9a7633e-1f8f-4eef-81e8-b3b63435057b.png', color: '#00599C', category: 'Languages' },
     { name: '3D Modeling', logo: '/lovable-uploads/9e828afb-a23d-4f2e-b33b-f1e58fc3603a.png', color: '#4CAF50', category: 'Tools' }
   ];
+
+  // Continuous rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isHovered) {
+        setRotation(prev => prev + 0.5); // Slow continuous rotation
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -45,16 +57,17 @@ const InteractiveSkills = () => {
     const baseRadius = 120;
     const mouseInfluence = isHovered ? 20 : 0;
     
-    // Add mouse influence to create organic movement
+    // Add mouse influence and continuous rotation
     const radius = baseRadius + mouseInfluence * (1 + Math.sin(angle + mousePosition.x * 2));
-    const mouseRotation = mousePosition.x * 0.5;
+    const mouseRotation = isHovered ? mousePosition.x * 0.5 : 0;
+    const continuousRotation = (rotation * Math.PI) / 180; // Convert to radians
     
-    const x = Math.cos(angle + mouseRotation) * radius;
-    const y = Math.sin(angle + mouseRotation) * radius;
+    const x = Math.cos(angle + mouseRotation + continuousRotation) * radius;
+    const y = Math.sin(angle + mouseRotation + continuousRotation) * radius;
     
     return {
       transform: `translate(${x}px, ${y}px) scale(${isHovered ? 1.1 : 1})`,
-      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+      transition: isHovered ? 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)' : 'transform 0.1s ease-out'
     };
   };
 
