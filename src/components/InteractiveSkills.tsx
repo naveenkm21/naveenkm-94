@@ -14,18 +14,12 @@ const InteractiveSkills = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const skills: Skill[] = [
-    { name: 'JavaScript', logo: '⚡', color: '#F7DF1E', category: 'Frontend' },
-    { name: 'React', logo: '⚛️', color: '#61DAFB', category: 'Frontend' },
-    { name: 'TypeScript', logo: '📘', color: '#3178C6', category: 'Frontend' },
-    { name: 'Python', logo: '🐍', color: '#3776AB', category: 'Backend' },
-    { name: 'Node.js', logo: '🟢', color: '#339933', category: 'Backend' },
-    { name: 'AWS', logo: '☁️', color: '#FF9900', category: 'Cloud' },
-    { name: 'Docker', logo: '🐳', color: '#2496ED', category: 'DevOps' },
-    { name: 'Git', logo: '📚', color: '#F05032', category: 'Tools' },
-    { name: 'Next.js', logo: '▲', color: '#000000', category: 'Frontend' },
-    { name: 'Java', logo: '☕', color: '#ED8B00', category: 'Backend' },
-    { name: 'C++', logo: '🔧', color: '#00599C', category: 'Languages' },
-    { name: 'MongoDB', logo: '🍃', color: '#47A248', category: 'Database' }
+    { name: 'JavaScript', logo: '/lovable-uploads/6f2e46b4-5c39-4c40-9cdf-48945f8569f3.png', color: '#F7DF1E', category: 'Frontend' },
+    { name: 'React', logo: '/lovable-uploads/e98be2a6-0429-45d7-a4ec-1362a49557e2.png', color: '#61DAFB', category: 'Frontend' },
+    { name: 'Python', logo: '/lovable-uploads/50a0fc22-52a2-4172-ad75-47a3dfe6f035.png', color: '#3776AB', category: 'Backend' },
+    { name: 'Java', logo: '/lovable-uploads/900cc8b5-8682-421d-ad92-ad7d84e3c8a5.png', color: '#ED8B00', category: 'Backend' },
+    { name: 'C++', logo: '/lovable-uploads/d9a7633e-1f8f-4eef-81e8-b3b63435057b.png', color: '#00599C', category: 'Languages' },
+    { name: '3D Modeling', logo: '/lovable-uploads/9e828afb-a23d-4f2e-b33b-f1e58fc3603a.png', color: '#4CAF50', category: 'Tools' }
   ];
 
   useEffect(() => {
@@ -99,8 +93,12 @@ const InteractiveSkills = () => {
                 />
                 
                 {/* Logo */}
-                <div className="text-2xl group-hover:scale-110 transition-transform duration-300 relative z-10">
-                  {skill.logo}
+                <div className="w-8 h-8 group-hover:scale-110 transition-transform duration-300 relative z-10 flex items-center justify-center">
+                  <img 
+                    src={skill.logo} 
+                    alt={skill.name}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 
                 {/* Tooltip */}
