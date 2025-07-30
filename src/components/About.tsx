@@ -1,6 +1,7 @@
 
 import { Card, CardContent } from '@/components/ui/card';
 import Timeline from './Timeline';
+import InteractiveSkills from './InteractiveSkills';
 
 const About = () => {
   const education = [
@@ -57,32 +58,6 @@ const About = () => {
     }
   ];
 
-  const skills = [
-    { 
-      category: "Languages", 
-      items: ["C/C++", "Java", "Python", "JavaScript"],
-      icon: "💻",
-      color: "from-blue-500 to-purple-600"
-    },
-    { 
-      category: "Web Technologies", 
-      items: ["HTML", "CSS", "React", "Next.js"],
-      icon: "🌐",
-      color: "from-green-500 to-teal-600"
-    },
-    { 
-      category: "Cloud & Tools", 
-      items: ["AWS", "Power BI", "Jetpack Compose"],
-      icon: "☁️",
-      color: "from-orange-500 to-red-600"
-    },
-    { 
-      category: "AI/ML", 
-      items: ["Machine Learning", "Predictive Analytics"],
-      icon: "🤖",
-      color: "from-purple-500 to-pink-600"
-    }
-  ];
 
   const certifications = [
     { name: "AWS Cloud Foundations", status: "certified" },
@@ -176,35 +151,8 @@ const About = () => {
           </div>
         </div>
 
-        {/* Skills Section */}
-        <div className="text-center">
-          <h3 className="text-3xl font-bold font-poppins text-navy dark:text-white mb-12">Technical Expertise</h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {skills.map((skillGroup, index) => (
-              <Card key={index} className="group hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-purple-500/20 transition-all duration-300 transform hover:-translate-y-2 border-0 dark:border dark:border-gray-700 overflow-hidden bg-white dark:bg-gray-800">
-                <CardContent className="p-8 text-center relative">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${skillGroup.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    {skillGroup.icon}
-                  </div>
-                  <h4 className="font-bold text-lg text-navy dark:text-white mb-6 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors relative z-10">
-                    {skillGroup.category}
-                  </h4>
-                  <div className="space-y-3 relative z-10">
-                    {skillGroup.items.map((skill, skillIndex) => (
-                      <div 
-                        key={skillIndex}
-                        className={`inline-block bg-gradient-to-r ${skillGroup.color} bg-clip-text text-transparent font-medium px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 group-hover:border-purple-300 dark:group-hover:border-purple-600 transition-all duration-300 mx-1 mb-2 group-hover:shadow-md`}
-                      >
-                        {skill}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        {/* Interactive Skills Section */}
+        <InteractiveSkills />
       </div>
     </section>
   );
